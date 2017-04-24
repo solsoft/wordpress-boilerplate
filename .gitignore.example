@@ -1,0 +1,26 @@
+# See documentation for gitignore at https://git-scm.com/docs/gitignore or man(5).
+# A global gitignore file should be created to ignore typical temporary files.
+# Use the tool gi at https://www.gitignore.io to provide this.
+
+# Ignore composer binary
+composer.phar
+
+# Ignore example composer configuration
+composer.examples/
+
+# Ignore other projects git repositories
+/vendor/**/.git
+/assets/**/.git
+/app/**/.git
+
+# Ignore build caches
+/**/.sass-cache
+
+# Ignore configuration files that may contain sensitive information
+/app/wp-config.php
+/app/core/wp-config.php
+
+# Ignore paths that may contain user-generated content
+/app/wp-content/uploads
+/app/core/wp-content/uploads
+/app/content/uploads

@@ -1,0 +1,16 @@
+# These .gitignore rules are for developing the boilerplate.
+# You should use the rules provided in .gitignore.example for projects.
+
+# Ignore composer binary and lock file
+composer.phar
+composer.lock
+
+# Ignore custom composer configuration
+composer/composer.local.json
+composer/composer.json
+composer/*/*
+
+# Ignore files deployed in vendor, assets and app
+vendor/
+assets/
+app/
