@@ -1,0 +1,133 @@
+{
+  "name": "solsoft/wordpress-boilerplate",
+  "description": "Boilerplate for deploying new WordPress projects",
+  "keywords": [ "wordpress", "boilerplate", "composer" ],
+  "homepage": "http://sol-soft.org/",
+  "support": {
+    "source": "https://github.com/solsoft/wordpress-boilerplate",
+    "docs": "https://github.com/solsoft/wordpress-boilerplate/wiki",
+    "wiki": "https://github.com/solsoft/wordpress-boilerplate/wiki",
+    "issues": "https://github.com/solsoft/wordpress-boilerplate/issues",
+    "email": "info@sol-soft.org"
+  },
+  "type": "project",
+  "license": [
+    "GPL-3.0+"
+  ],
+  "authors": [
+    {
+      "name": "Luís Pedro Algarvio",
+      "email": "lp.algarvio@gmail.com",
+      "homepage": "http://lp.algarvio.org",
+      "role": "DevOps"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "vendor-dir": "vendor",
+    "preferred-install": "dist",
+    "secure-http": true,
+    "github-protocols": [ "https", "git", "ssh" ]
+  },
+  "extra": {
+    "merge-plugin": {
+      "include": [
+        "app/composer.json",
+        "app/core/composer.json",
+        "composer/composer.json",
+        "composer/*/composer.json",
+        "composer/*/*/composer.json",
+        "composer/*/*/*/composer.json",
+        "composer/composer.local.json"
+      ],
+      "recurse": false,
+      "replace": false,
+      "merge-dev": true,
+      "merge-extra": true,
+      "merge-scripts": true
+    },
+    "wordpress-install-dir": "app/core",
+    "installer-paths": {
+      "app/content/mu-plugins/{$name}": ["type:wordpress-muplugin"],
+      "app/content/plugins/{$name}": ["type:wordpress-plugin"],
+      "app/content/themes/{$name}": ["type:wordpress-theme"]
+    },
+    "preserve-paths": [
+      "app/content/mu-plugins/",
+      "app/content/plugins/",
+      "app/content/themes/",
+      "app/wp-config.php",
+      "assets"
+    ]
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "if [ -d vendor/ ]; then find vendor/ -type d | grep .git | xargs rm -Rf; fi",
+      "if [ -d assets/ ]; then find assets/ -type d | grep .git | xargs rm -Rf; fi",
+      "if [ -d app/ ]; then find app/ -type d | grep .git | xargs rm -Rf; fi",
+      "if [ -f app/core/wp-config-sample.php ]; then rm -f app/core/wp-config-sample.php; fi",
+      "cp -f scripts/wordpress/wp-config-sample.php app/wp-config-sample.php",
+      "if [ -d app/core/wp-content/ ]; then mv app/core/wp-content/ app/content/; fi",
+      "mkdir -p app/content/mu-plugins/ app/content/plugins/ app/content/themes/"
+    ],
+    "post-update-cmd": [
+      "if [ -d vendor/ ]; then find vendor/ -type d | grep .git | xargs rm -Rf; fi",
+      "if [ -d assets/ ]; then find assets/ -type d | grep .git | xargs rm -Rf; fi",
+      "if [ -d app/ ]; then find app/ -type d | grep .git | xargs rm -Rf; fi",
+      "if [ -f app/core/wp-config-sample.php ]; then rm -f app/core/wp-config-sample.php; fi",
+      "cp -f scripts/wordpress/wp-config-sample.php app/wp-config-sample.php",
+      "if [ -d app/core/wp-content/ ]; then mv app/core/wp-content/ app/content/; fi",
+      "mkdir -p app/content/mu-plugins/ app/content/plugins/ app/content/themes/"
+    ],
+    "post-create-project-cmd": [
+      "mv LICENSE LICENSE.composer",
+      "mv README.md README.composer.md",
+      "rm -f .gitignore; mv .gitignore.example .gitignore",
+      "mv composer/composer.local.example.json composer/composer.local.json"
+    ],
+    "cleanup-project": [
+      "rm -f composer.lock",
+      "rm -Rf app/core/",
+      "if [ -d app/core/ ]; then rm app/core/ -Rf; fi",
+      "if [ -d assets/ ]; then find assets/ -maxdepth 1 -type d -exec rm -Rf {} +; fi",
+      "if [ -d vendor/ ]; then rm vendor/ -Rf; fi"
+    ],
+    "examples-deploy": [
+      "cp -R composer.examples/4.7.x/* composer/"
+    ],
+    "examples-undeploy": [
+      "rm -f composer/composer.json",
+      "rm -Rf composer/contrib-*"
+    ],
+    "run": [
+      "php -S localhost:8080 -t app/core"
+    ]
+  },
+  "autoload": {
+  },
+  "repositories": {
+    "wpackagist": {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    "rarst": {
+      "type": "composer",
+      "url" : "https://rarst.net"
+    }
+  },
+  "require": {
+    "cweagans/composer-patches": "^1.6",
+    "wikimedia/composer-merge-plugin": "^1.4",
+    "composer/installers": "^1.2",
+    "mnsami/composer-custom-directory-installer": "^1.1",
+    "derhasi/composer-preserve-paths": "^0.1",
+    "johnpbloch/wordpress-core-installer": "^0.2",
+    "johnpbloch/wordpress-core": "^4.7.4",
+    "rarst/locate-vendor": "^1.0"
+  },
+  "require-dev": {
+  },
+  "require-disabled": {
+  }
+}
