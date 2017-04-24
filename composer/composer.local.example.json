@@ -1,0 +1,16 @@
+{
+  "extra": {
+    "patches": {
+    },
+    "installer-paths": {
+    }
+  },
+  "repositories": {
+  },
+  "require": {
+  },
+  "require-dev": {
+  },
+  "require-disabled": {
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "extra": {
+    "installer-paths": {
+    }
+  },
+  "repositories": {
+  },
+  "require": {
+  },
+  "require-dev": {
+    "wpackagist-plugin/developer": "^1.2.6"
+  },
+  "require-disabled": {
+  }
+}
