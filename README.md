@@ -1,4 +1,10 @@
 # wordpress-boilerplate
+[![Build Status](https://travis-ci.org/solsoft/wordpress-boilerplate.svg?branch=4.x)](https://travis-ci.org/solsoft/wordpress-boilerplate)
+[![Dependency Status](https://www.versioneye.com/user/projects/58feac52710da23f86d4ff05/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58feac52710da23f86d4ff05)
+[![Packagist](https://img.shields.io/packagist/vpre/solsoft/wordpress-boilerplate.svg)](https://packagist.org/packages/solsoft/wordpress-boilerplate)
+[![PHP 7 ready](https://php7ready.timesplinter.ch/solsoft/wordpress-boilerplate/4.x/badge.svg)](https://travis-ci.org/solsoft/wordpress-boilerplate)
+[![License](https://poser.pugx.org/solsoft/wordpress-boilerplate/license)](https://github.com/solsoft/wordpress-boilerplate/blob/4.x/LICENSE)
+
 Boilerplate for deploying new [WordPress](https://wordpress.org/) projects.  Based on [johnpbloch/wordpress-project](https://github.com/johnpbloch/wordpress-project) and [composer.rarst.net](https://http://composer.rarst.net/).  
 Using [Composer](https://getcomposer.org/) and associated plugins, and the unofficial [wpackagist.org](https://wpackagist.org) repository.  
 Packages are published and updated regularly at [Packagist](https://packagist.org/packages/solsoft/wordpress-boilerplate).  
@@ -14,7 +20,7 @@ Before starting, consult the Composer reference for standard usage instructions.
 Use `composer create-project` to deploy a new project, specifying one branch.
 
 ```
-composer create-project solsoft/wordpress-boilerplate:4.7.x-dev my-project --stability dev --no-interaction;
+composer create-project solsoft/wordpress-boilerplate:4.x-dev my-project --stability dev --no-interaction;
 cd my-project;
 composer update;
 composer show;
@@ -26,7 +32,7 @@ Clone the git repository pointing to one of the development branches.
 Merge requests should be submitted against these branches.
 
 ```
-git clone -b 4.7.x git@github.com:solsoft/wordpress-boilerplate.git;
+git clone -b 4.x git@github.com:solsoft/wordpress-boilerplate.git;
 cd wordpress-boilerplate;
 composer install;
 composer update;
